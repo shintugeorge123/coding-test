@@ -1,0 +1,27 @@
+<div class="admin-form-container">
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" required>
+      <mat-error *ngIf="jobForm.get('title').errors?.required">Title is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" required></textarea>
+      <mat-error *ngIf="jobForm.get('description').errors?.required">Description is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option value="Front end">Front end</mat-option>
+        <mat-option value="Back end">Back end</mat-option>
+        <mat-option value="Full stack">Full stack</mat-option>
+      </mat-select>
+      <mat-error *ngIf="jobForm.get('category').errors?.required">Category is required</mat-error>
+    </mat-form-field>
+
+    <button mat-button type="submit" [disabled]="!jobForm.valid">Submit</button>
+  </form>
+</div>
